@@ -57,10 +57,14 @@ nav a:hover {
 
 /* HERO */
 .hero {
-    background-image: url("grafiki/narzedzia-sportowe.jpg");
-    text-align: center;
-    padding: 8rem 1rem;
     position: relative;
+    background-image: url("grafiki/narzedzia-sportowe.jpg"); 
+    background-size: cover;
+    background-position: center; 
+    color: ghostwhite; 
+    padding: 120px 20px; 
+    text-align: center; 
+    overflow: hidden;
 }
 
 .hero::after {
@@ -259,4 +263,5 @@ footer .social a:hover {
         font-size: 2rem;
     }
 }
+
 
