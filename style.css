@@ -2,6 +2,16 @@
    SPORTNEWS STYL – NOWOCZESNY DESIGN
    =============================== */
 
+/* ZMIENNE KOLORÓW */
+:root {
+    --primary: #e63946;
+    --primary-dark: #c5283d;
+    --dark: #111;
+    --light-bg: #f5f5f5;
+    --text: #222;
+    --shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
 /* RESET I PODSTAWA */
 * {
     margin: 0;
@@ -11,14 +21,14 @@
 }
 
 body {
-    background-color: #f5f5f5;
-    color: #222;
+    background-color: var(--light-bg);
+    color: var(--text);
     line-height: 1.6;
 }
 
 /* NAGŁÓWEK */
 header {
-    background: #111;
+    background: var(--dark);
     color: #fff;
     display: flex;
     justify-content: space-between;
@@ -27,13 +37,19 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
+    transition: background 0.3s, backdrop-filter 0.3s;
+}
+
+header.scrolled {
+    background: rgba(17, 17, 17, 0.95);
+    backdrop-filter: blur(6px);
 }
 
 header .logo {
     font-size: 1.8rem;
     font-weight: bold;
     letter-spacing: 1px;
-    color: #e63946;
+    color: var(--primary);
 }
 
 nav ul {
@@ -52,18 +68,18 @@ nav a {
 }
 
 nav a:hover {
-    color: #e63946;
+    color: var(--primary);
 }
 
 /* HERO */
 .hero {
     position: relative;
-    background-image: url("grafiki/narzedzia-sportowe.jpg"); 
+    background-image: url("grafiki/narzedzia-sportowe.jpg");
     background-size: cover;
-    background-position: center; 
-    color: ghostwhite; 
-    padding: 120px 20px; 
-    text-align: center; 
+    background-position: center;
+    color: ghostwhite;
+    padding: 120px 20px;
+    text-align: center;
     overflow: hidden;
 }
 
@@ -82,22 +98,38 @@ nav a:hover {
 .hero h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeSlideIn 1s ease forwards;
 }
 
 .hero button {
-    background: #e63946;
+    background: var(--primary);
     border: none;
     padding: 0.8rem 1.5rem;
     font-size: 1rem;
     border-radius: 30px;
     color: #fff;
     cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(230, 57, 70, 0.3);
     transition: background 0.3s, transform 0.2s;
 }
 
 .hero button:hover {
-    background: #c5283d;
+    background: var(--primary-dark);
     transform: scale(1.05);
+}
+
+/* ANIMACJE */
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* SEKCJE OGÓLNE */
@@ -110,7 +142,7 @@ section {
 section h2 {
     text-align: center;
     margin-bottom: 2rem;
-    color: #e63946;
+    color: var(--primary);
     text-transform: uppercase;
 }
 
@@ -125,6 +157,9 @@ section h2 {
 
 /* SERVICES */
 .services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
     background: #fff;
     border-radius: 10px;
     padding: 3rem;
@@ -132,10 +167,9 @@ section h2 {
 
 .service {
     background: #fafafa;
-    margin-bottom: 2rem;
     padding: 1.5rem;
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow);
     transition: transform 0.3s;
 }
 
@@ -155,34 +189,33 @@ section h2 {
     margin-bottom: 2rem;
     padding: 1.5rem;
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow);
 }
 
 .blog .read-more-btn {
     display: inline-block;
     margin-top: 1rem;
-    background: #e63946;
+    background: var(--primary);
     color: #fff;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
+    padding: 0.6rem 1.2rem;
+    border-radius: 30px;
     text-decoration: none;
-    transition: background 0.3s;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(230, 57, 70, 0.3);
+    transition: background 0.3s, transform 0.2s;
 }
 
 .blog .read-more-btn:hover {
-    background: #c5283d;
+    background: var(--primary-dark);
+    transform: translateY(-2px);
 }
 
 /* GALERIA */
 .portfolio {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
     background: #fdfdfd;
-}
-
-.project {
-    display: inline-block;
-    width: calc(50% - 1rem);
-    margin: 0.5rem;
-    text-align: center;
 }
 
 .project img {
@@ -212,27 +245,33 @@ section h2 {
     padding: 0.8rem;
     border-radius: 5px;
     border: 1px solid #ccc;
+    font-size: 1rem;
 }
 
 .contact button {
-    background: #e63946;
+    background: var(--primary);
     border: none;
     color: #fff;
     padding: 0.8rem;
     border-radius: 5px;
     cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(230, 57, 70, 0.3);
+    transition: background 0.3s, transform 0.2s;
 }
 
 .contact button:hover {
-    background: #c5283d;
+    background: var(--primary-dark);
+    transform: translateY(-2px);
 }
 
 /* STOPKA */
 footer {
-    background: #111;
-    color: #aaa;
+    background: var(--dark);
+    color: #ccc;
     text-align: center;
     padding: 2rem 1rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
 }
 
 footer .social {
@@ -241,7 +280,7 @@ footer .social {
 
 footer .social a {
     margin: 0 10px;
-    color: #e63946;
+    color: var(--primary);
     font-size: 1.3rem;
     transition: color 0.3s;
 }
@@ -250,18 +289,43 @@ footer .social a:hover {
     color: #fff;
 }
 
+/* ANIMACJA POJAWIANIA SIĘ SEKCJI */
+[data-animate] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+[data-animate].visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* RESPONSYWNOŚĆ */
+html {
+    font-size: 16px;
+}
+
 @media (max-width: 768px) {
+    html {
+        font-size: 15px;
+    }
+
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
     nav ul {
         flex-direction: column;
         gap: 0.5rem;
     }
-    .project {
-        width: 100%;
-    }
+
     .hero h1 {
         font-size: 2rem;
     }
+
+    .project {
+        width: 100%;
+    }
 }
-
-
