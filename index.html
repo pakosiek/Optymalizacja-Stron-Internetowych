@@ -133,10 +133,16 @@
     <section class="contact">
         <h2>Skontaktuj się z redakcją</h2>
         <form>
-            <input type="text" placeholder="Imię">
-            <input type="email" placeholder="Email">
-            <textarea placeholder="Twoja wiadomość lub propozycja artykułu"></textarea>
-            <button>Wyślij wiadomość</button>
+            <label for="name">Imię</label>
+            <input id="name" type="text" placeholder="Imię" required>
+        
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="Email" required>
+        
+            <label for="message">Wiadomość</label>
+            <textarea id="message" placeholder="Twoja wiadomość" required></textarea>
+        
+            <button type="submit">Wyślij wiadomość</button>
         </form>
     </section>
     </main>
@@ -146,6 +152,7 @@
 
 </body>
 </html>
+
 
 
 
