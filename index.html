@@ -17,6 +17,7 @@
         <nav aria-label="Główne menu">
             <ul>
                 <li><a href="#start">Start</a></li>
+                <li><a href="#onas">O nas</a></li>
                 <li><a href="#wiadomosci">Wiadomości</a></li>
                 <li><a href="#dyscypliny">Dyscypliny</a></li>
                 <li><a href="#galeria">Galeria</a></li>
@@ -26,7 +27,7 @@
     </header>
 
     <main>
-    <section class="hero">
+    <section id="start" class="hero">
         <h1>Najświeższe wiadomości sportowe!</h1>
         <p>Piłka nożna, siatkówka, lekkoatletyka, sporty zimowe — wszystko w jednym miejscu.</p>
         <button onclick="document.querySelector('.blog').scrollIntoView({behavior: 'smooth'})">
@@ -34,7 +35,7 @@
         </button>
     </section>
 
-    <section class="about">
+    <section id="onas" class="about">
         <h2>O portalu SportNews</h2>
         <p>
             SportNews to nowoczesny portal informacyjny tworzony przez pasjonatów sportu dla wszystkich,
@@ -59,7 +60,7 @@
              alt="Zespół redakcyjny SportNews w pracy" loading="lazy">
     </section>
 
-    <section class="services">
+    <section id="dyscypliny" class="services">
         <h2>Dyscypliny, o których piszemy</h2>
         <p>
             SportNews to miejsce dla każdego fana sportu! Od piłki nożnej, koszykówki i siatkówki,
@@ -97,7 +98,7 @@
         </div>
     </section>
 
-    <section class="blog">
+    <section id="wiadomosci" class="blog">
     <h2>Aktualności sportowe</h2>
     
     <article>
@@ -120,7 +121,7 @@
 </section>
 
 
-    <section class="portfolio">
+    <section id="galeria" class="portfolio">
         <h2>Galeria z wydarzeń</h2>
         <div class="project">
             <img src="grafiki/liga_mistrzow.jpg" alt="Mecz piłkarski" loading="lazy">
@@ -132,7 +133,7 @@
         </div>
     </section>
 
-    <section class="contact">
+    <section id="kontakt" class="contact">
         <h2>Skontaktuj się z redakcją</h2>
         <form>
             <label for="name">Imię</label>
@@ -161,6 +162,7 @@
 
 </body>
 </html>
+
 
 
 
