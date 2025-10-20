@@ -32,7 +32,7 @@ header {
     color: #fff;
     display: flex;
     justify-content: space-between;
-    align-items: right;
+    align-items: center;
     padding: 1rem 2rem;
     position: sticky;
     top: 0;
@@ -337,6 +337,7 @@ html {
 html {
   scroll-behavior: smooth;
 }
+
 
 
 
