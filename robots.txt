@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /seobility/
+Allow: /seobility/Zrzut ekranu 2025-10-20 103836.png
+Sitemap: https://pakosiek.github.io/Optymalizacja-Stron-Internetowych/sitemap.xml
