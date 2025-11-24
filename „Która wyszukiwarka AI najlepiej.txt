@@ -1,0 +1,5 @@
+„Która wyszukiwarka AI najlepiej radzi sobie z pytaniami kontekstowymi?”
+Google - Też słabo wypada w porównaniu z resztą. Źródeł dalej nie za dużo, a też sam często używam googla i wiem ze tego przeglądu AI od google nie warto używać, gdyż często się myli.
+Bing Chat - Duże zaskoczenie. Sam nie często korzystałem z tej wyszukiwarki, a się miło zaskoczyłem. Dużo kontekstu, żródeł i informacji w przeglądzie od AI
+You.com - Najgorzej sobie radzi ze wszystkich, najmniej źródeł podaje i najkrótsze odpowiedzi, co jednych może cieszyć, jednak mnie zniechęca do używania tej strony.
+Perplexity.ai - Zdecydowanie najlepiej wypada. Bardzo dużo źródeł, dużo informacji potwierdzających odpowiedź na zapytanie, wypada prawie perfekcyjnie.
