@@ -1,0 +1,26 @@
+Aspekty psychologiczne i UX zaimplementowane w projekcie
+W celu zwiększenia zaangażowania użytkownika (retencji) oraz obniżenia współczynnika odrzuceń (bounce rate), w strukturze strony SportNews wdrożono konkretne rozwiązania oparte na mechanizmach psychologicznych:
+
+1. Wpływ wydajności na percepcję (Web Performance Optimization) Teoria: Zgodnie z zasadą Doherty Threshold, systemy reagujące poniżej 400ms są odbierane przez mózg jako działające w czasie rzeczywistym, co utrzymuje uwagę użytkownika.
+
+Realizacja w projekcie: Kod strony (HTML/CSS) został zoptymalizowany pod kątem szybkości ładowania, a skrypty JS są ładowane z atrybutem defer. Dzięki temu interfejs reaguje natychmiastowo, utrzymując użytkownika w "stanie flow" i zapobiegając irytacji przy nawigacji.
+
+2. Luka informacyjna (Information Gap Theory) Teoria: Stan ciekawości wywołany rozbieżnością między wiedzą obecną a pożądaną stymuluje do poszukiwania informacji.
+
+Realizacja w projekcie: W sekcji "Aktualności" zastosowano nagłówki typu click-through (np. "Nowy rekord świata..."), które nie zdradzają od razu wyniku, lecz zmuszają do kliknięcia w przycisk "Czytaj więcej", zwiększając głębokość wizyty.
+
+3. Emocjonalne oddziaływanie obrazem (Picture Superiority Effect) Teoria: Mózg przetwarza obrazy 60 000 razy szybciej niż tekst, a emocje są kluczowym czynnikiem decyzyjnym w sporcie.
+
+Realizacja w projekcie: Sekcja Hero (ekran powitalny) wykorzystuje wysokiej jakości zdjęcie tła przedstawiające akcesoria sportowe, co ma na celu wywołanie natychmiastowego skojarzenia z aktywnością fizyczną i zatrzymanie wzroku użytkownika w pierwszych sekundach wizyty.
+
+4. FOMO i efekt świeżości (Recency Bias) Teoria: Użytkownicy serwisów newsowych oczekują najnowszych informacji "tu i teraz".
+
+Realizacja w projekcie: Najważniejszy przycisk w sekcji powitalnej ("Zobacz najnowsze newsy") natychmiast przenosi użytkownika do sekcji z artykułami, wykorzystując potrzebę bycia na bieżąco i skracając ścieżkę do najważniejszych treści.
+
+5. Prawo Bliskości (Gestalt Principles) Teoria: Elementy znajdujące się blisko siebie są postrzegane jako powiązana grupa tematyczna.
+
+Realizacja w projekcie: W sekcji "Dyscypliny" zastosowano układ kafelkowy (Grid), gdzie każda dyscyplina stanowi wizualnie odrębną, zamkniętą całość (zdjęcie + opis). Redukuje to ładunek poznawczy (cognitive load) i ułatwia szybkie skanowanie oferty serwisu.
+
+6. Personalizacja interfejsu (Dark Mode) a User Empowerment Teoria: Danie użytkownikowi kontroli nad wyglądem strony buduje zaufanie i zmniejsza zmęczenie wzroku (Digital Eye Strain).
+
+Realizacja w projekcie: Zaimplementowano skrypt JavaScript obsługujący tryb ciemny (Dark Mode) z zapisywaniem preferencji w localStorage. Użytkownik może samodzielnie przełączyć motyw przyciskiem w menu, co zwiększa komfort czytania w godzinach wieczornych i bezpośrednio wpływa na wydłużenie czasu spędzonego na stronie (Time on Site).
