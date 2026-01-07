@@ -170,3 +170,51 @@ Brakujące opisy (Labels): Wykryto formularze bez etykiet, co uniemożliwia ich 
 4. Podsumowanie błędów WAVE: Narzędzie zidentyfikowało łącznie 10 błędów krytycznych i 100 ostrzeżeń.
 
 Najważniejsze do poprawy: Uzupełnienie atrybutów ALT przy obrazkach (szczególnie linkujących), usunięcie tabindex większego niż 0 oraz dodanie etykiet tekstowych do ikon (przycisków).
+
+
+
+
+
+Użyteczność na urządzeniach mobilnych (Mobile UX)
+
+1. Responsywność i skalowanie (RWD):
+
+    Stan: Strona poprawnie dostosowuje układ do szerokości ekranu (RWD). Menu główne zmienia się w tzw. "hamburger menu", a kolumny układają się jedna pod drugą.
+
+    Plus: Wskaźnik CLS (Cumulative Layout Shift) na telefonie wynosi 0 (Idealny). Oznacza to, że w przeciwieństwie do wersji na komputer, na telefonie elementy nie "skaczą" podczas ładowania, co jest kluczowe dla komfortu użytkownika dotykowego.
+
+2. Problemy z interfejsem dotykowym (Touch Targets):
+
+    Problem: Wykryto elementy o zbyt małej powierzchni kliknięcia. Jak wskazano w sekcji dostępności, ikony mediów społecznościowych są zbyt blisko siebie, co grozi przypadkowym kliknięciem ("Fat finger error").
+
+    Czytelność: Raport WAVE wskazał "Very small text" w kilku miejscach. Na małych ekranach może to zmuszać użytkownika do ręcznego powiększania widoku (pinch-to-zoom), co jest błędem użyteczności.
+
+3. Wpływ wydajności na UX mobilny:
+
+    Krytyczny błąd: Czas LCP wynoszący 13,3 s na mobile całkowicie dyskwalifikuje stronę w warunkach "w biegu" (np. korzystanie z LTE w autobusie). Użytkownik mobilny jest mniej cierpliwy – przy takim opóźnieniu większość osób opuści stronę przed jej załadowaniem.
+
+
+
+
+
+Podsumowanie i Wnioski Końcowe
+
+
+
+Przeprowadzony audyt strony pwr.edu.pl wykazał, że serwis jest dobrze przygotowany merytorycznie i wizualnie, ale posiada poważne braki w optymalizacji technicznej oraz dostępności cyfrowej.
+
+Główne grzechy strony:
+
+    1.Ciężar zasobów: Strona główna waży prawie 3 MB, co przy braku formatów nowej generacji (WebP) zabija wydajność na telefonach.
+
+    2. Błędy SEO: Brak tagu canonical to szkolny błąd, który może powodować problemy z indeksowaniem w Google.
+
+    3. Wykluczenie cyfrowe: Puste przyciski (brak etykiet) i nadmiar ARIA sprawiają, że poruszanie się po stronie za pomocą czytnika ekranu jest utrudnione.
+
+Rekomendacja działań (Plan naprawczy):
+
+    PRIORYTET 1: Kompresja obrazów i konwersja do formatu WebP/AVIF. To rozwiąże problem krytycznego czasu ładowania na mobile.
+
+    PRIORYTET 2 (SEO): Dodanie tagu <link rel="canonical" href="https://pwr.edu.pl/" /> w sekcji <head>.
+
+    PRIORYTET 3 (Dostępność): Uzupełnienie atrybutów alt przy zdjęciach oraz dodanie aria-label do przycisków ikonowych (wyszukiwarka, social media).
