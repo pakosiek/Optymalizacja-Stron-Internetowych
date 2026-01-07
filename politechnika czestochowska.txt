@@ -1,0 +1,44 @@
+RAPORT AUDYTU: POLITECHNIKA CZĘSTOCHOWSKA (pcz.pl)
+
+1. WYDAJNOŚĆ ŁADOWANIA (PERFORMANCE) – CORE WEB VITALS
+
+| Wskaźnik | Mobile (Wynik: 64/100) | Desktop (Wynik: 72/100) | Ocena |
+| :--- | :--- | :--- | :--- |
+| LCP (Największa treść) | 11,3 s (Krytyczny) | 1,9 s (Dobry) | Na desktopie strona ładuje się szybko, ale na mobile jest bardzo ciężka i wolna. |
+| TBT (Blokowanie) | 140 ms (Akceptowalny) | 0 ms (Idealny) | Interaktywność jest na wysokim poziomie. |
+| CLS (Przesunięcia) | 0,001 (Idealny) | 0,402 (Krytyczny) | Ciekawa odwrotność względem PWr. Na mobile układ jest stabilny, ale na desktopie "pływa" drastycznie (wynik 0,4 to bardzo dużo). |
+
+Problemy techniczne:
+- WAGA STRONY (Krytyczne): Strona główna waży ponad 10 MB (10,263 KiB)!. To ewenement na skalę negatywną.
+- Obrazy: Możliwość zaoszczędzenia aż 7 MB danych poprzez samą optymalizację grafik na desktopie.
+
+2. SEO TECHNICZNE (WYNIK: 92/100)
+
+Struktura i Meta:
+- Wynik SEO: Bardzo wysoki (92 pkt). Strona jest lepiej zoptymalizowana pod roboty Google niż PWr.
+- Nagłówki: Wzorowa, głęboka hierarchia. Występują H1, liczne H2, H3 oraz H4. Treść jest logicznie poukładana.
+
+Stan techniczny:
+- Linki: Wszystkie są możliwe do zindeksowania.
+- Obrazy: Większość posiada atrybuty ALT (tylko 4 braki), co jest dobrym wynikiem w porównaniu do PWr.
+
+3. DOSTĘPNOŚĆ I UŻYTECZNOŚĆ (ACCESSIBILITY & UX)
+
+Wynik Lighthouse: 89/100 (Mobile) / 84/100 (Desktop)
+Analiza WAVE:
+- Struktura: Poprawne użycie regionów (Header, Nav, Main, Footer, Aside).
+- Kontrast: Wykryto 23 błędy kontrastu (zbyt jasne czcionki).
+- Semantyka: Brak błędów z pustymi przyciskami czy tabindexem, które występowały na PWr.
+
+4. PODSUMOWANIE I REKOMENDACJE
+
+Politechnika Częstochowska posiada serwis znacznie lepiej przygotowany pod kątem struktury, SEO i dostępności niż PWr. Jednakże popełniono tu jeden kardynalny błąd optymalizacyjny: brak kompresji mediów.
+
+Główne wnioski:
+- Strona jest "gigantem" wagowym (10 MB), co dyskwalifikuje ją na słabszych łączach mobilnych.
+- Wersja desktopowa ma poważny problem ze stabilnością wizualną (wysoki CLS), co irytuje użytkowników komputerów.
+
+Plan naprawczy:
+1. DRASTYCZNE zmniejszenie wagi strony (kompresja zdjęć/wideo) – cel: zejść poniżej 3 MB.
+2. Nadanie wymiarów (width/height) elementom na wersji desktopowej, aby zniwelować przesunięcia (CLS).
+3. Poprawa kontrastu tekstów dla lepszej czytelności.

@@ -1,0 +1,45 @@
+RAPORT AUDYTU: POLITECHNIKA WARSZAWSKA (pw.edu.pl)
+
+1. WYDAJNOŚĆ ŁADOWANIA (PERFORMANCE) – CORE WEB VITALS
+
+| Wskaźnik | Mobile (Wynik: 55/100) | Desktop (Wynik: 86/100) | Ocena |
+| :--- | :--- | :--- | :--- |
+| LCP (Największa treść) | 13,2 s (Krytyczny) | 2,2 s (Dobry) | Drastyczna różnica. Na komputerze strona ładuje się błyskawicznie, na telefonie użytkownik czeka ponad 13 sekund (identycznie jak na PWr). |
+| TBT (Blokowanie) | 110 ms (Dobry) | 110 ms (Dobry) | Skrypty nie blokują przeglądarki, strona jest responsywna od razu po załadowaniu. |
+| CLS (Przesunięcia) | 0 (Idealny) | 0 (Idealny) | Wzór do naśladowania. Układ jest "zabetonowany" i stabilny na każdym urządzeniu. Nic nie przesuwa się w trakcie czytania. |
+
+Problemy techniczne:
+- Blokowanie renderowania: Aż 8,3 sekundy opóźnienia na mobile przez skrypty i style ładowane w nagłówku strony. To główny "hamulec" strony.
+- Bezpieczeństwo (Mixed Content): Wykryto błąd "Does not use HTTPS - 5 insecure requests". Strona jest szyfrowana, ale pobiera niektóre zasoby (np. obrazki) przez nieszyfrowane połączenie HTTP, co obniża wiarygodność w oczach przeglądarki.
+- Cache: Zasoby statyczne nie są cache'owane (potencjał oszczędności 2,5 MB).
+
+2. SEO TECHNICZNE (WYNIK: 100/100)
+
+Struktura i Meta:
+- Wynik Lighthouse: IDEALNY (100/100). Wszystkie podstawowe parametry (tytuł, opis, indeksowanie) są poprawne.
+- Struktura Nagłówków (H1-H6): Tutaj widać pewien chaos. Strona posiada aż 7 nagłówków H1 (m.in. "Główna nawigacja", "Aktualności", "Wydarzenia"). Choć HTML5 na to pozwala, w "klasycznym" SEO zaleca się jeden unikalny H1 na podstronę.
+- Linkowanie: Linki są czytelne, posiadają teksty opisowe.
+
+3. DOSTĘPNOŚĆ I UŻYTECZNOŚĆ (ACCESSIBILITY & UX)
+
+Wynik Lighthouse: 100/100 (IDEALNY)
+Analiza WAVE (bardziej szczegółowa):
+- Rozbieżność wyników: Mimo że Lighthouse daje 100 pkt, WAVE wykrył 7 błędów.
+- Puste elementy: Wykryto 3 puste przyciski i 1 pusty link ("Empty button/link"), co może być problemem dla czytników ekranu.
+- Kontrast: WAVE zgłasza 5 błędów kontrastu ("Very low contrast"), których Lighthouse nie wyłapał.
+- ARIA: Poprawne, bardzo szerokie wykorzystanie etykiet ARIA (136 elementów).
+
+4. PODSUMOWANIE I REKOMENDACJE
+
+Politechnika Warszawska wyróżnia się na tle konkurencji (PWr i PCz) niemal idealnymi wynikami w automatycznych testach jakości kodu (SEO i Dostępność na 100/100 w Lighthouse). Jest to serwis najlepiej przygotowany technicznie.
+
+Jednakże, podobnie jak u innych uczelni, piętą achillesową jest wydajność mobilna.
+
+Główne wnioski do porównania w sprawozdaniu:
+- PW vs PWr: PW ma znacznie czystszy kod i lepszą dostępność, ale obie strony są tak samo wolne na telefonach (LCP ~13s).
+- PW vs PCz: PW ma znacznie lżejszą stronę (3 MB) w porównaniu do "giganta" z Częstochowy (10 MB), co czyni ją bardziej przyjazną dla użytkownika.
+
+Plan naprawczy:
+1. Rozwiązać problem "Render blocking requests" – przesunąć ładowanie skryptów, aby nie blokowały wyświetlania treści na 8 sekund.
+2. Naprawić "Mixed Content" (zmienić linki http:// na https://) – to szybka poprawka bezpieczeństwa.
+3. Uporządkować strukturę H1 (zostawić jeden główny nagłówek) dla lepszej przejrzystości semantycznej.

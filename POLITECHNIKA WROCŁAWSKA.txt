@@ -1,220 +1,42 @@
-POLITECHNIKA WROCŁAWSKA:
+RAPORT AUDYTU: POLITECHNIKA WROCŁAWSKA (pwr.edu.pl)
 
+1. WYDAJNOŚĆ ŁADOWANIA (PERFORMANCE) – CORE WEB VITALS
 
+| Wskaźnik | Mobile (Wynik: 65/100) | Desktop (Wynik: 76/100) | Ocena |
+| :--- | :--- | :--- | :--- |
+| LCP (Największa treść) | 13,3 s (Krytyczny) | 2,5 s (Wymaga poprawy) | Czas ładowania na telefonie jest nieakceptowalny. Użytkownik czeka ponad 13 sekund na treść. |
+| TBT (Blokowanie) | 30 ms (Dobry) | 10 ms (Dobry) | Strona szybko reaguje na kliknięcia, skrypty nie blokują wątku głównego na długo. |
+| CLS (Przesunięcia) | 0 (Idealny) | 0,217 (Zły) | Na komputerze układ "skacze" podczas ładowania (brak wymiarów obrazków), na telefonie jest stabilny. |
 
-Wydajność ładowania (Performance) – Core Web Vitals
+Problemy techniczne:
+- Waga strony: Prawie 3 MB (2906 KiB).
+- Format obrazów: Brak nowoczesnych formatów (WebP/AVIF), co marnuje ponad 1.3 MB transferu.
+- Caching: Zasoby statyczne nie są efektywnie cache'owane w przeglądarce.
 
+2. SEO TECHNICZNE (WYNIK: 83/100)
 
-Wskaźnik,					Mobile (Wynik: 65/100),		Desktop (Wynik: 76/100),		Ocena
+Struktura i Meta:
+- Tytuł i Opis: Poprawne, zawierają słowa kluczowe.
+- Nagłówki: Płytka struktura (tylko H1 i H2, brak H3-H6). Mało rozbudowana semantyka.
 
-LCP (Largest Contentful Paint),			"13,3 s (Krytyczny)",		"2,5 s (Wymaga poprawy)",		Czas ładowania największego elementu na telefonie jest fatalny. Użytkownik czeka ponad 13 sekund na wyświetlenie głównej treści.
+Błędy Krytyczne:
+- Canonical: BRAK tagu canonical. Ryzyko duplikacji treści w Google.
+- Indeksowanie linków: Lighthouse zgłasza błąd "Linków nie można zindeksować" (prawdopodobnie menu w JS).
+- Obrazy: Aż 21 na 32 obrazki nie posiada opisu alternatywnego (ALT).
 
-FID / TBT (Interactivity),			30 ms (Dobry),			10 ms (Dobry),				Strona szybko reaguje na kliknięcia (mierzone jako Total Blocking Time w Lighthouse). To mocna strona serwisu.
+3. DOSTĘPNOŚĆ I UŻYTECZNOŚĆ (ACCESSIBILITY & UX)
 
-CLS (Cumulative Layout Shift),			0 (Idealny),			"0,217 (Zły)",				"Ciekawa anomalia. Na telefonie układ jest stabilny, ale na komputerze elementy ""skaczą"" podczas ładowania (powyżej normy 0,1), co irytuje użytkowników."
+Wynik Lighthouse: 78/100
+Analiza WAVE:
+- Błędy krytyczne: Puste przyciski (brak etykiet dla czytników ekranu) oraz błąd logiczny "Tabindex > 0" w formularzach.
+- Kontrast: Problemy z czytelnością szarego tekstu na białym tle (menu, przełącznik języka).
+- ARIA: Nadmiar atrybutów ARIA (ponad 120), co sugeruje łatanie kodu zamiast poprawnej semantyki HTML.
 
-2. Czas odpowiedzi serwera i ładowanie widoku
+4. PODSUMOWANIE I REKOMENDACJE
 
-FCP (First Contentful Paint):
+Strona PWr ma solidne zaplecze serwerowe (szybki czas reakcji), ale zaniedbany frontend. Głównym problemem jest brak optymalizacji grafik oraz błędy w kodzie HTML utrudniające dostępność.
 
-Desktop: 0,6 s (Bardzo szybko). Serwer odpowiada sprawnie, a pierwsze elementy pojawiają się błyskawicznie.
-
-Mobile: 3,2 s (Wolno). Na telefonach renderowanie jest blokowane przez zasoby, co opóźnia pojawienie się treści.
-
-Speed Index: Na mobile wynosi aż 5,4 s, co oznacza, że wizualne wypełnianie się strony trwa zbyt długo.
-
-Całkowity rozmiar (Payload): Zrzut ekranu wskazuje na duży ładunek sieciowy (2906 KiB, czyli prawie 3 MB). To bardzo dużo jak na stronę główną, co bezpośrednio przekłada się na wolne ładowanie na słabszych łączach mobilnych.
-
-
-3. Caching, Kompresja i Minifikacja
-Analiza sekcji "Diagnostyka" i "Możliwości" wskazuje na konkretne braki techniczne:
-
-Caching (Pamięć podręczna):
-
-Raport mobilny wskazuje błąd: "Używaj efektywnego czasu przechowywania w pamięci podręcznej" z potencjalną oszczędnością 167 KiB. Oznacza to, że przeglądarka musi wielokrotnie pobierać te same zasoby (np. logo, skrypty) zamiast wczytać je z dysku użytkownika.
-
-Minifikacja i Kod (JS/CSS):
-
-Wykryto nieużywany kod JavaScript (oszczędność ok. 194 KiB) oraz nieużywany CSS (37 KiB). Strona ładuje biblioteki lub style, z których wcale nie korzysta na stronie głównej.
-
-Sugestia "Minifikuj CSS" (oszczędność 2 KiB) jest marginalna, ale warto ją wdrożyć dla zasady.
-
-Występuje problem z "Prośbami o zablokowanie renderowania" (szczególnie na mobile – oszczędność czasu aż 2590 ms). Krytyczne style/skrypty powinny być ładowane w sposób nieblokujący (np. defer/async lub inline dla critical path).
-
-Kompresja: Raport sugeruje "Unikaj bardzo dużych ładunków sieciowych", co może sugerować, że kompresja tekstowa (GZIP/Brotli) działa, ale same zasoby (głównie media) są po prostu zbyt ciężkie.
-
-4. Struktura i wielkość obrazów
-To najważniejszy obszar do optymalizacji, dający największe potencjalne zyski:
-
-Optymalizacja rozmiaru:
-
-Punkt "Ulepsz dostarczanie obrazów" na mobile sugeruje oszczędność aż 1350 KiB (ponad 1.3 MB!). Obrazy są przesyłane w zbyt wysokiej rozdzielczości lub bez kompresji.
-
-Punkt "Wyrenderowanie największej części treści" (LCP) na mobile (13,3 s) jest bezpośrednio powiązany z ciężkimi grafikami.
-
-Formaty nowej generacji: Lighthouse wprost sugeruje konwersję do formatów takich jak WebP lub AVIF, które przy tej samej jakości ważą znacznie mniej niż JPG/PNG.
-
-Brak wymiarów (CLS):
-
-Na wersji desktopowej zdiagnozowano: "Elementy graficzne nie mają bezpośrednio określonych atrybutów width ani height". To jest główna przyczyna złego wyniku CLS (0,217). Przeglądarka nie wie, ile miejsca zostawić na obrazek, więc gdy ten się załaduje, przesuwa treść pod sobą.
-
-
-
-
-
-
-SEO techniczne
-
-1. Struktura tytułów, opisów meta i nagłówków (H1-H6)
-Tytuł strony (Title):
-
-Stan: Poprawny. Tytuł to "Politechnika Wrocławska" (23 znaki).
-
-Ocena: Jest krótki i brandowy. Warto rozważyć dodanie słowa kluczowego, np. "Politechnika Wrocławska – Uczelnia Techniczna", aby lepiej wykorzystać dostępną przestrzeń.
-
-Meta Opis (Description):
-
-Stan: Istnieje, długość 180 znaków. Treść: "Politechnika Wrocławska – jedna z najlepszych uczelni technicznych w kraju...".
-
-Ocena: Opis jest zachęcający i zawiera słowa kluczowe. Jest nieco dłuższy niż zalecane 155-160 znaków (Google może go uciąć), ale jest poprawnie wdrożony.
-
-Nagłówki (H1-H6):
-
-Stan: Struktura jest bardzo spłycona. Wykryto: 1x H1, 3x H2, 0x H3-H6.
-
-Ocena: Hierarchia jest zachowana (H1 -> H2), co jest plusem. Jednak brak nagłówków niższego rzędu (H3, H4) przy tak dużej stronie sugeruje, że treść na stronie głównej jest mało rozbudowana semantycznie. Struktura jest zbyt uboga jak na duży portal edukacyjny.
-
-2. Tagi techniczne, obrazy i linkowanie
-Tag Canonical:
-
-Stan: KRYTYCZNY BŁĄD. Narzędzie wskazuje: "Canonical URL is not defined".
-
-Ocena: Brak tagu kanonicznego naraża stronę na problem duplikacji treści (np. jeśli strona otwiera się z www i bez www lub z parametrami śledzącymi). Powinien wskazywać na https://pwr.edu.pl/.
-
-Plik robots.txt:
-
-Stan: Prawidłowy. Plik istnieje i poprawnie blokuje dostęp do katalogów administracyjnych (/files/, /ajax/, /pracownicy/). Lighthouse również potwierdza jego poprawność.
-
-Alternatywne opisy obrazów (ALT):
-
-Stan: ZŁY. Na 32 obrazy aż 21 nie posiada atrybutu ALT. Potwierdza to również audyt Lighthouse.
-
-Nazewnictwo plików: Zrzut ekranu ujawnia fatalne nazewnictwo plików, np. qABoNM1Ylek9kAEQ...jpg. Takie nazwy nic nie mówią robotom Google o zawartości zdjęcia.
-
-Favicon:
-
-Stan: Widoczny na pasku karty przeglądarki, co jest standardem.
-
-Struktura linków wewnętrznych:
-
-Stan: Wykryto 205 linków, z czego 110 nie ma atrybutu title (co jest mniejszym błędem).
-
-Problem: Lighthouse zgłasza poważny błąd: "Linków nie można zindeksować". Oznacza to, że część nawigacji może być zbudowana w oparciu o JavaScript w sposób nieczytelny dla robotów, co utrudnia indeksowanie podstron.
-
-3. Adresy URL, Breadcrumbs, OpenGraph i Schema
-Struktura adresów URL:
-
-Stan: Adresy wydają się przyjazne (tzw. friendly URLs), np. /badania/oferta-wspolpracy czy /mapa-serwisu. Są czytelne dla użytkownika.
-
-Breadcrumbs (Okruszki):
-
-Stan: Brak danych strukturalnych wspierających breadcrumbs. Na stronie głównej zazwyczaj nie występują, ale brak wdrożenia Schema.org sugeruje, że mogą nie być poprawnie oznaczane również na podstronach.
-
-Open Graph (Social Media):
-
-Stan: BRAK. Narzędzie raportuje "No DATA has been found for OPEN GRAPH" oraz brak danych dla Twittera.
-
-Ocena: Strona będzie wyglądać źle po udostępnieniu na Facebooku lub LinkedIn (brak zdefiniowanego zdjęcia i tytułu dla social mediów).
-
-Schema.org (Dane uporządkowane):
-
-Stan: BRAK. "No DATA has been found for Schema.org".
-
-Ocena: Uczelnia traci szansę na wyświetlanie rozszerzonych wyników w Google (np. paska wyszukiwania, wydarzeń, danych teleadresowych bezpośrednio w wynikach wyszukiwania).
-
-
-
-
-
-
-
-
-
-Dostępność i użyteczność (Accessibility + UX)
-
-
-Na podstawie szczegółowych audytów (WAVE, Lighthouse) strona uzyskała wynik dostępności 78/100, co oznacza, że wyklucza część użytkowników z niepełnosprawnościami.
-
-1. Kontrast, czytelność i układ:
-
-Problemy z kontrastem: Mimo że część tekstów przechodzi testy, Lighthouse wykrył elementy o zbyt niskim kontraście, konkretnie w przełączniku języka (PL | EN) oraz w elementach nawigacji (top-controls). Utrudnia to czytanie osobom słabowidzącym lub korzystającym z telefonu w pełnym słońcu.
-
-Błędy typograficzne (Alerts): Narzędzie WAVE zgłosiło ostrzeżenia dotyczące "Very small text" (bardzo małego tekstu) w 3 miejscach oraz "Justified text" (wyjustowanego tekstu) w 2 miejscach. Justowanie tekstu w internecie jest błędem UX, ponieważ tworzy nierówne odstępy między wyrazami, co drastycznie utrudnia czytanie osobom z dysleksją.
-
-Cele dotykowe (Mobile): Ikony mediów społecznościowych (Facebook, Instagram) są zbyt małe lub umieszczone zbyt blisko siebie. Użytkownicy smartfonów mogą mieć problem z trafieniem w odpowiedni link.
-
-2. Dostępność dla czytników ekranowych (Screen Readers):
-
-Puste przyciski (Błąd Krytyczny): Wykryto aż 7 pustych przycisków ("Empty button"). To poważny błąd – osoba niewidoma usłyszy tylko słowo "Przycisk", ale nie dowie się, do czego on służy (np. czy to "Szukaj", czy "Menu").
-
-Struktura nagłówków: Struktura jest zaburzona. WAVE wykrył "Empty heading" (pusty nagłówek) w sekcji H1, co myli użytkowników nawigujących po nagłówkach. Dodatkowo wykryto 8 przypadków "Possible heading", co sugeruje, że tekst został pogrubiony, zamiast użyć odpowiedniego znacznika HTML.
-
-Nadmiar ARIA: Strona używa bardzo dużo atrybutów ARIA (129 elementów). Jest to ryzykowne ("Better no ARIA than bad ARIA") – tak duża liczba często świadczy o łataniu źle napisanego kodu HTML zamiast używania natywnych rozwiązań.
-
-3. Interaktywność i nawigacja klawiaturą:
-
-Błąd Tabindex (Krytyczny): Lighthouse wykrył, że element <select> (wybór wydziału) ma ustawiony tabindex="1". Jest to błąd programistyczny, który wymusza nienaturalną kolejność nawigacji klawiszem TAB (przenosi użytkownika do tego elementu przed innymi, ważniejszymi treściami), co dezorientuje osoby niekorzystające z myszki.
-
-Brakujące opisy (Labels): Wykryto formularze bez etykiet, co uniemożliwia ich poprawną obsługę przez technologie wspomagające.
-
-4. Podsumowanie błędów WAVE: Narzędzie zidentyfikowało łącznie 10 błędów krytycznych i 100 ostrzeżeń.
-
-Najważniejsze do poprawy: Uzupełnienie atrybutów ALT przy obrazkach (szczególnie linkujących), usunięcie tabindex większego niż 0 oraz dodanie etykiet tekstowych do ikon (przycisków).
-
-
-
-
-
-Użyteczność na urządzeniach mobilnych (Mobile UX)
-
-1. Responsywność i skalowanie (RWD):
-
-    Stan: Strona poprawnie dostosowuje układ do szerokości ekranu (RWD). Menu główne zmienia się w tzw. "hamburger menu", a kolumny układają się jedna pod drugą.
-
-    Plus: Wskaźnik CLS (Cumulative Layout Shift) na telefonie wynosi 0 (Idealny). Oznacza to, że w przeciwieństwie do wersji na komputer, na telefonie elementy nie "skaczą" podczas ładowania, co jest kluczowe dla komfortu użytkownika dotykowego.
-
-2. Problemy z interfejsem dotykowym (Touch Targets):
-
-    Problem: Wykryto elementy o zbyt małej powierzchni kliknięcia. Jak wskazano w sekcji dostępności, ikony mediów społecznościowych są zbyt blisko siebie, co grozi przypadkowym kliknięciem ("Fat finger error").
-
-    Czytelność: Raport WAVE wskazał "Very small text" w kilku miejscach. Na małych ekranach może to zmuszać użytkownika do ręcznego powiększania widoku (pinch-to-zoom), co jest błędem użyteczności.
-
-3. Wpływ wydajności na UX mobilny:
-
-    Krytyczny błąd: Czas LCP wynoszący 13,3 s na mobile całkowicie dyskwalifikuje stronę w warunkach "w biegu" (np. korzystanie z LTE w autobusie). Użytkownik mobilny jest mniej cierpliwy – przy takim opóźnieniu większość osób opuści stronę przed jej załadowaniem.
-
-
-
-
-
-Podsumowanie i Wnioski Końcowe
-
-
-
-Przeprowadzony audyt strony pwr.edu.pl wykazał, że serwis jest dobrze przygotowany merytorycznie i wizualnie, ale posiada poważne braki w optymalizacji technicznej oraz dostępności cyfrowej.
-
-Główne grzechy strony:
-
-    1.Ciężar zasobów: Strona główna waży prawie 3 MB, co przy braku formatów nowej generacji (WebP) zabija wydajność na telefonach.
-
-    2. Błędy SEO: Brak tagu canonical to szkolny błąd, który może powodować problemy z indeksowaniem w Google.
-
-    3. Wykluczenie cyfrowe: Puste przyciski (brak etykiet) i nadmiar ARIA sprawiają, że poruszanie się po stronie za pomocą czytnika ekranu jest utrudnione.
-
-Rekomendacja działań (Plan naprawczy):
-
-    PRIORYTET 1: Kompresja obrazów i konwersja do formatu WebP/AVIF. To rozwiąże problem krytycznego czasu ładowania na mobile.
-
-    PRIORYTET 2 (SEO): Dodanie tagu <link rel="canonical" href="https://pwr.edu.pl/" /> w sekcji <head>.
-
-    PRIORYTET 3 (Dostępność): Uzupełnienie atrybutów alt przy zdjęciach oraz dodanie aria-label do przycisków ikonowych (wyszukiwarka, social media).
+Plan naprawczy:
+1. Skompresować obrazy do formatu WebP (zysk wydajności).
+2. Dodać tag rel="canonical" (zysk SEO).
+3. Uzupełnić atrybuty ALT i etykiety przycisków (zysk Dostępności).
