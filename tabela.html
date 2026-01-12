@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background-color: #f9f9f9; }
+    table { width: 100%; border-collapse: collapse; background-color: #fff; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
+    th { background-color: #2c3e50; color: #ffffff; padding: 15px; text-align: left; border: 1px solid #2c3e50; }
+    td { padding: 12px 15px; border: 1px solid #ddd; vertical-align: top; font-size: 14px; line-height: 1.5; color: #333; }
+    tr:nth-child(even) { background-color: #f2f2f2; }
+    strong { color: #d35400; }
+    .score-bad { color: #c0392b; font-weight: bold; }
+    .score-good { color: #27ae60; font-weight: bold; }
+    .score-avg { color: #f39c12; font-weight: bold; }
+    .uczelnia { font-weight: bold; font-size: 1.1em; color: #2980b9; }
+</style>
+</head>
+<body>
+
+<table>
+    <thead>
+        <tr>
+            <th style="width: 15%">Zakres Analizy</th>
+            <th style="width: 28%">Politechnika Wrocławska (PWr)</th>
+            <th style="width: 28%">Politechnika Częstochowska (PCz)</th>
+            <th style="width: 28%">Politechnika Warszawska (PW)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>1. Wydajność (Performance)</strong><br><small>Core Web Vitals, Czas, Waga</small></td>
+            <td>
+                Mobile: <span class="score-avg">65/100</span><br>
+                Desktop: <span class="score-avg">76/100</span><br><br>
+                • LCP (Mobile): <span class="score-bad">13,3 s</span> (Krytyczny)<br>
+                • Waga: ~2,9 MB<br>
+                • <em>Problem:</em> Brak formatów WebP i cache.
+            </td>
+            <td>
+                Mobile: <span class="score-avg">64/100</span><br>
+                Desktop: <span class="score-avg">72/100</span><br><br>
+                • LCP (Mobile): <span class="score-bad">11,3 s</span> (Krytyczny)<br>
+                • Waga: <span class="score-bad">10,2 MB</span> (Gigantyczna!)<br>
+                • <em>Problem:</em> Nieskompresowane media.
+            </td>
+            <td>
+                Mobile: <span class="score-bad">55/100</span><br>
+                Desktop: <span class="score-good">86/100</span><br><br>
+                • LCP (Mobile): <span class="score-bad">13,2 s</span> (Krytyczny)<br>
+                • Waga: ~3,0 MB<br>
+                • <em>Problem:</em> Blokowanie renderowania (JS).
+            </td>
+        </tr>
+        <tr>
+            <td><strong>2. SEO Techniczne</strong><br><small>Meta, Nagłówki, Linki</small></td>
+            <td>
+                Wynik: <span class="score-good">83/100</span><br><br>
+                • <span class="score-bad">BŁĄD:</span> Brak tagu Canonical.<br>
+                • Nagłówki: Płytkie (tylko H1, H2).<br>
+                • Linki: Część niezindeksowana (menu JS).
+            </td>
+            <td>
+                Wynik: <span class="score-good">92/100</span><br><br>
+                • Canonical: Poprawny.<br>
+                • Nagłówki: Wzorowa hierarchia (H1-H4).<br>
+                • Linki: Czytelne dla robotów.
+            </td>
+            <td>
+                Wynik: <span class="score-good">100/100</span> (Idealny)<br><br>
+                • Canonical: Poprawny.<br>
+                • Nagłówki: Chaos (Wiele H1 na stronie).<br>
+                • <em>Błąd:</em> Mixed Content (HTTP/HTTPS).
+            </td>
+        </tr>
+        <tr>
+            <td><strong>3. Dostępność (Accessibility)</strong><br><small>Kontrast, ARIA, WAVE</small></td>
+            <td>
+                Wynik: <span class="score-avg">78/100</span><br><br>
+                • Błędy: Puste przyciski (brak etykiet).<br>
+                • Kontrast: Problemy z szarym tekstem.<br>
+                • WAVE: Nadmiar ARIA.
+            </td>
+            <td>
+                Wynik: <span class="score-good">89/100</span><br><br>
+                • Błędy: Podejrzane opisy ALT.<br>
+                • Kontrast: 23 błędy (zbyt jasne fonty).<br>
+                • Struktura: Poprawne regiony.
+            </td>
+            <td>
+                Wynik: <span class="score-good">100/100</span> (Wzorowy)<br><br>
+                • Błędy: Minimalne (puste linki).<br>
+                • Kontrast: Idealny.<br>
+                • Semantyka: Zgodna z WCAG 2.1.
+            </td>
+        </tr>
+        <tr>
+            <td><strong>4. Użyteczność Mobilna</strong><br><small>RWD, Touch Targets</small></td>
+            <td>
+                • <strong>RWD:</strong> Poprawne, CLS=0.<br>
+                • <strong>Dotyk:</strong> Zbyt małe ikony social media (błąd "fat finger").<br>
+                • <strong>Czytelność:</strong> Zbyt mały font.
+            </td>
+            <td>
+                • <strong>RWD:</strong> Poprawne, CLS=0.<br>
+                • <strong>Problem:</strong> Transfer danych (10MB) odstrasza użytkowników mobilnych.<br>
+                • <strong>Układ:</strong> Czytelny.
+            </td>
+            <td>
+                • <strong>RWD:</strong> Poprawne, CLS=0.<br>
+                • <strong>Problem:</strong> Długie "białe tło" przed załadowaniem (blokujący JS).<br>
+                • <strong>Układ:</strong> Dostosowany do kciuka.
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
